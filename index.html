@@ -26,6 +26,41 @@
             padding: 20px;
         }
 
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -220,6 +255,15 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+
+            .nav-buttons {
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         .app-store-badge {
@@ -240,241 +284,414 @@
             margin-top: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .support-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .support-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white !important;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <div class="app-icon">TP</div>
-            <h1>TextbookPro</h1>
-            <p class="tagline">Master your textbooks, your way.</p>
-            <p class="description">
-                Textbooks are the most reliable source of knowledge for any course or curriculum. TextbookPro helps
-                students study them smarter—not harder. Built around the power of textbooks, the app breaks down complex
-                chapters into structured mini-courses you can actually finish.
-            </p>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('home', this)">Home</button>
+            <button class="nav-btn" onclick="showSection('support', this)">Support & Contact</button>
+            <button class="nav-btn" onclick="showSection('terms', this)">Terms & Conditions</button>
+            <button class="nav-btn" onclick="showSection('privacy', this)">Privacy Policy</button>
         </div>
 
-        <div class="content-grid">
-            <div class="card">
-                <h2><span class="card-icon">✨</span>Features</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <h3>Structured Mini-Courses</h3>
-                        <p>5–10 day study tracks built from trusted textbook content</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Smart Study Plans</h3>
-                        <p>Personalized schedules based on your goals and time</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Fast-Track Quizzes</h3>
-                        <p>Quickly assess what you know and focus on what you don't</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Textbook References</h3>
-                        <p>Direct links to clear, curriculum-aligned explanations</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Progress Tracking</h3>
-                        <p>Stay motivated and visualize your learning journey</p>
-                    </div>
-                </div>
-                <p style="margin-top: 20px; font-style: italic; color: #666;">
-                    Currently optimized for AMC 10 and IGCSE syllabuses. More subjects coming soon.
+        <div id="home" class="section active">
+            <div class="header">
+                <div class="app-icon">TP</div>
+                <h1>TextbookPro</h1>
+                <p class="tagline">Master your textbooks, your way.</p>
+                <p class="description">
+                    Textbooks are the most reliable source of knowledge for any course or curriculum. TextbookPro helps
+                    students study them smarter—not harder. Built around the power of textbooks, the app breaks down
+                    complex
+                    chapters into structured mini-courses you can actually finish.
                 </p>
             </div>
 
-            <div class="card">
-                <h2><span class="card-icon">❓</span>Frequently Asked Questions</h2>
-
-                <div class="faq-item">
-                    <div class="faq-question">What is TextbookPro?</div>
-                    <div class="faq-answer">TextbookPro is an iOS app that transforms traditional textbooks into
-                        structured, manageable study courses. It breaks down complex chapters into 5-10 day learning
-                        tracks with quizzes, progress tracking, and personalized study plans.</div>
+            <div class="content-grid">
+                <div class="card">
+                    <h2><span class="card-icon">✨</span>Features</h2>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <h3>Structured Mini-Courses</h3>
+                            <p>5–10 day study tracks built from trusted textbook content</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Smart Study Plans</h3>
+                            <p>Personalized schedules based on your goals and time</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Fast-Track Quizzes</h3>
+                            <p>Quickly assess what you know and focus on what you don't</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Textbook References</h3>
+                            <p>Direct links to clear, curriculum-aligned explanations</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Progress Tracking</h3>
+                            <p>Stay motivated and visualize your learning journey</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic; color: #666;">
+                        Currently optimized for AMC 10 and IGCSE syllabuses. More subjects coming soon.
+                    </p>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">Which subjects are currently supported?</div>
-                    <div class="faq-answer">TextbookPro is currently optimized for AMC 10 (American Mathematics
-                        Competitions) and IGCSE (International General Certificate of Secondary Education) syllabuses.
-                        We're actively working on adding more subjects and curricula.</div>
-                </div>
+                <div class="card">
+                    <h2><span class="card-icon">❓</span>Frequently Asked Questions</h2>
 
-                <div class="faq-item">
-                    <div class="faq-question">How do the mini-courses work?</div>
-                    <div class="faq-answer">Each mini-course is a structured 5-10 day study track that breaks down
-                        textbook chapters into digestible daily lessons. You'll get clear learning objectives, practice
-                        exercises, and progress tracking to keep you motivated.</div>
-                </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What is TextbookPro?</div>
+                        <div class="faq-answer">TextbookPro is an iOS app that transforms traditional textbooks into
+                            structured, manageable study courses. It breaks down complex chapters into 5-10 day learning
+                            tracks with quizzes, progress tracking, and personalized study plans.</div>
+                    </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">Can I customize my study schedule?</div>
-                    <div class="faq-answer">Yes! TextbookPro creates personalized study plans based on your available
-                        time and learning goals. You can adjust the pace and intensity to fit your
-                        schedule.</div>
-                </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Which subjects are currently supported?</div>
+                        <div class="faq-answer">TextbookPro is currently optimized for AMC 10 (American Mathematics
+                            Competitions) and IGCSE (International General Certificate of Secondary Education)
+                            syllabuses.
+                            We're actively working on adding more subjects and curricula.</div>
+                    </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">Is TextbookPro free to use?</div>
-                    <div class="faq-answer">TextbookPro is completely free to use, with no in app purchases.</div>
-                </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How do the mini-courses work?</div>
+                        <div class="faq-answer">Each mini-course is a structured 5-10 day study track that breaks down
+                            textbook chapters into digestible daily lessons. You'll get clear learning objectives,
+                            practice
+                            exercises, and progress tracking to keep you motivated.</div>
+                    </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">How do I report a bug or request a feature?</div>
-                    <div class="faq-answer">You can contact our support team using the contact information below. We
-                        actively review all feedback and regularly update the app based on user suggestions.</div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I customize my study schedule?</div>
+                        <div class="faq-answer">Yes! TextbookPro creates personalized study plans based on your
+                            available
+                            time and learning goals. You can adjust the pace and intensity to fit your
+                            schedule.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Is TextbookPro free to use?</div>
+                        <div class="faq-answer">TextbookPro is completely free to use, with no in app purchases.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I report a bug or request a feature?</div>
+                        <div class="faq-answer">You can contact our support team in the Support & Contact section. We
+                            actively review all feedback and regularly update the app based on user suggestions.</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="card">
-            <h2><span class="card-icon">📞</span>Support & Contact</h2>
-            <div class="contact-info">
-                <h3>Need Help?</h3>
-                <p>Email us at: <a href="mailto:harleennsachdev@gmail.com">harleennsachdev@gmail.com</a></p>
-                <p style="margin-top: 15px;">We typically respond within 24 hours</p>
+        <div id="support" class="section">
+            <div class="support-hero">
+                <h1 style="color: white !important; -webkit-text-fill-color: white !important;">Support & Contact</h1>
+                <p class="tagline" style="color: white;">We're here to help you succeed</p>
             </div>
 
-            <div style="margin-top: 30px;">
-                <h3>App Store</h3>
-                <p style="margin-bottom: 20px;">Download TextbookPro from the App Store:</p>
-                <!-- Placeholder for App Store badge - replace with actual link when app is published -->
-                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
-                    <p style="color: #666; font-style: italic;">App Store link will be available once the app is
-                        published</p>
+            <div class="support-grid">
+                <div class="card">
+                    <h2><span class="card-icon">📧</span>Get in Touch</h2>
+                    <div class="contact-info">
+                        <h3>Need Help?</h3>
+                        <p>Email us at: <a href="mailto:harleennsachdev@gmail.com">harleennsachdev@gmail.com</a></p>
+                        <p style="margin-top: 15px;">We typically respond within 24 hours</p>
+                    </div>
+                    <p style="margin-top: 20px; color: #666;">
+                        Whether you have questions about features, need technical support, or want to share feedback,
+                        we'd love to hear from you. Our team is committed to helping you get the most out of
+                        TextbookPro.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2><span class="card-icon">🐛</span>Report Issues</h2>
+                    <p style="margin-bottom: 20px;">Found a bug or experiencing technical difficulties? Here's how to
+                        get help:</p>
+
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4 style="margin-bottom: 10px; color: #333;">What to Include:</h4>
+                        <ul style="color: #666; padding-left: 20px;">
+                            <li>Device model and iOS version</li>
+                            <li>App version</li>
+                            <li>Steps to reproduce the issue</li>
+                            <li>Screenshots if applicable</li>
+                        </ul>
+                    </div>
+
+                    <p style="color: #666;">
+                        The more details you provide, the faster we can identify and fix the problem!
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2><span class="card-icon">💡</span>Feature Requests</h2>
+                    <p style="margin-bottom: 20px;">Have an idea to make TextbookPro even better? We'd love to hear it!
+                    </p>
+
+                    <p style="color: #666;">
+                        Your suggestions help shape the future of TextbookPro. Every feature request is carefully
+                        considered!
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2><span class="card-icon">📱</span>App Store</h2>
+                    <p style="margin-bottom: 20px;">Download TextbookPro from the App Store:</p>
+
+                    <div style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                        <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+                        <p style="color: #666; font-style: italic; margin-bottom: 10px;">
+                            App Store link will be available once the app is published
+                        </p>
+                        <p style="color: #999; font-size: 0.9rem;">
+                            Stay tuned for the official launch!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2><span class="card-icon">❓</span>Common Questions</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I reset my password?</div>
+                        <div class="faq-answer">Use the "Forgot Password" option on the login screen, or contact support
+                            for assistance.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can I sync my progress across devices?</div>
+                        <div class="faq-answer">Yes! Your progress is automatically synced when you're signed in to your
+                            account.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I delete my account?</div>
+                        <div class="faq-answer">You can delete your account from the Profile section in the app, or
+                            contact us for assistance.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Why isn't my curriculum available?</div>
+                        <div class="faq-answer">We're constantly adding new curricula. Contact us to request specific
+                            subjects or let us know what you'd like to see next!</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2><span class="card-icon">🌟</span>About the Developer</h2>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white;">
+                            👨‍💻
+                        </div>
+                        <h3 style="margin-bottom: 10px;">Harleen Sachdev</h3>
+                        <p style="color: #666;">Creator & Developer of TextbookPro</p>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="privacy-policy">
-            <h2>Terms and Conditions</h2>
-            <p style="margin-bottom: 20px;"><strong>Last Updated:</strong> July 20, 2025</p>
+        <div id="terms" class="section">
+            <div class="privacy-policy">
+                <h2>Terms and Conditions</h2>
+                <p style="margin-bottom: 20px;"><strong>Last Updated:</strong> July 20, 2025</p>
 
-            <h3 style="margin: 25px 0 15px 0;">1. Acceptance of Terms</h3>
-            <p>By downloading, installing, or using TextbookPro, you agree to be bound by these Terms and Conditions. If
-                you do not agree to these terms, please do not use the app.</p>
+                <h3 style="margin: 25px 0 15px 0;">1. Acceptance of Terms</h3>
+                <p>By downloading, installing, or using TextbookPro, you agree to be bound by these Terms and
+                    Conditions. If
+                    you do not agree to these terms, please do not use the app.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">2. Description of Service</h3>
-            <p>TextbookPro provides educational study tools, textbook management, quiz functionality, and progress
-                tracking features to help users manage their learning journey effectively.</p>
+                <h3 style="margin: 25px 0 15px 0;">2. Description of Service</h3>
+                <p>TextbookPro provides educational study tools, textbook management, quiz functionality, and progress
+                    tracking features to help users manage their learning journey effectively.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">3. User Accounts</h3>
-            <p>You are responsible for maintaining the confidentiality of your account credentials and for all
-                activities that occur under your account. You agree to notify us immediately of any unauthorized use of
-                your account.</p>
-            <p>You must be at least 13 years old to create an account. If you are under the age of 13, please do not use
-                this app.</p>
+                <h3 style="margin: 25px 0 15px 0;">3. User Accounts</h3>
+                <p>You are responsible for maintaining the confidentiality of your account credentials and for all
+                    activities that occur under your account. You agree to notify us immediately of any unauthorized use
+                    of
+                    your account.</p>
+                <p>You must be at least 13 years old to create an account. If you are under the age of 13, please do not
+                    use
+                    this app.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">4. User Conduct</h3>
-            <p>You agree to use the app only for lawful purposes and in accordance with these Terms. You may not use the
-                app in any way that could damage, disable, or impair the service or interfere with any other party's use
-                of the app.</p>
+                <h3 style="margin: 25px 0 15px 0;">4. User Conduct</h3>
+                <p>You agree to use the app only for lawful purposes and in accordance with these Terms. You may not use
+                    the
+                    app in any way that could damage, disable, or impair the service or interfere with any other party's
+                    use
+                    of the app.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">5. Intellectual Property</h3>
-            <p>The app and its original content are and will remain the exclusive property of TextbookPro and its
-                licensors. The service is protected by copyright, trademark, and other laws.</p>
+                <h3 style="margin: 25px 0 15px 0;">5. Intellectual Property</h3>
+                <p>The app and its original content are and will remain the exclusive property of TextbookPro and its
+                    licensors. The service is protected by copyright, trademark, and other laws.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">6. Privacy</h3>
-            <p>Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the app
-                and explains how we collect, use, and protect your information.</p>
+                <h3 style="margin: 25px 0 15px 0;">6. Privacy</h3>
+                <p>Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the
+                    app
+                    and explains how we collect, use, and protect your information.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">7. Disclaimers</h3>
-            <p>The app is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, expressed or implied,
-                and hereby disclaim all other warranties including but not limited to warranties of merchantability and
-                fitness for a particular purpose.</p>
+                <h3 style="margin: 25px 0 15px 0;">7. Disclaimers</h3>
+                <p>The app is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, expressed or
+                    implied,
+                    and hereby disclaim all other warranties including but not limited to warranties of merchantability
+                    and
+                    fitness for a particular purpose.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">8. Limitation of Liability</h3>
-            <p>In no event shall TextbookPro be liable for any indirect, incidental, special, consequential, or punitive
-                damages, including but not limited to loss of profits, data, or other intangible losses.</p>
+                <h3 style="margin: 25px 0 15px 0;">8. Limitation of Liability</h3>
+                <p>In no event shall TextbookPro be liable for any indirect, incidental, special, consequential, or
+                    punitive
+                    damages, including but not limited to loss of profits, data, or other intangible losses.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">9. Termination</h3>
-            <p>We may terminate or suspend your account and access to the app immediately, without prior notice, for
-                conduct that we believe violates these Terms or is harmful to other users or the service.</p>
+                <h3 style="margin: 25px 0 15px 0;">9. Termination</h3>
+                <p>We may terminate or suspend your account and access to the app immediately, without prior notice, for
+                    conduct that we believe violates these Terms or is harmful to other users or the service.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">10. Changes to Terms</h3>
-            <p>We reserve the right to modify these terms at any time. We will notify users of any material changes by
-                updating the "Last Updated" date of these Terms and through in-app notifications.</p>
+                <h3 style="margin: 25px 0 15px 0;">10. Changes to Terms</h3>
+                <p>We reserve the right to modify these terms at any time. We will notify users of any material changes
+                    by
+                    updating the "Last Updated" date of these Terms and through in-app notifications.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">11. Contact Information</h3>
-            <p>TextbookPro is developed and maintained by Harleen Sachdev.</p>
-            <p>If you have any questions about these Terms, please contact me at <a
-                    href="mailto:harleennsachdev@gmail.com" style="color: #4facfe;">harleennsachdev@gmail.com</a></p>
+                <h3 style="margin: 25px 0 15px 0;">11. Contact Information</h3>
+                <p>TextbookPro is developed and maintained by Harleen Sachdev.</p>
+                <p>If you have any questions about these Terms, please contact me at <a
+                        href="mailto:harleennsachdev@gmail.com" style="color: #4facfe;">harleennsachdev@gmail.com</a>
+                </p>
+            </div>
         </div>
 
-        <div class="privacy-policy" style="margin-top: 30px;">
-            <h2>Privacy Policy</h2>
-            <p style="margin-bottom: 20px;"><strong>Last Updated:</strong> July 20, 2025</p>
+        <div id="privacy" class="section">
+            <div class="privacy-policy">
+                <h2>Privacy Policy</h2>
+                <p style="margin-bottom: 20px;"><strong>Last Updated:</strong> July 20, 2025</p>
 
-            <h3 style="margin: 25px 0 15px 0;">1. Information We Collect</h3>
-            <p>We collect information you provide directly to us, including:</p>
-            <ul style="margin: 15px 0; padding-left: 30px;">
-                <li>Account information (name, email address) via Firebase Authentication</li>
-                <li>Study progress and completion data</li>
-                <li>Textbook preferences (e.g., curriculum type like IGCSE or AMC 10)</li>
-                <li>Quiz results and performance data</li>
-                <li>Usage analytics to improve the app experience</li>
-            </ul>
+                <h3 style="margin: 25px 0 15px 0;">1. Information We Collect</h3>
+                <p>We collect information you provide directly to us, including:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>Account information (name, email address) via Firebase Authentication</li>
+                    <li>Study progress and completion data</li>
+                    <li>Textbook preferences (e.g., curriculum type like IGCSE or AMC 10)</li>
+                    <li>Quiz results and performance data</li>
+                    <li>Usage analytics to improve the app experience</li>
+                </ul>
 
-            <h3 style="margin: 25px 0 15px 0;">2. How We Use Your Information</h3>
-            <p>We use the information we collect to:</p>
-            <ul style="margin: 15px 0; padding-left: 30px;">
-                <li>Provide, maintain, and improve our services</li>
-                <li>Track your study progress and maintain streaks</li>
-                <li>Generate personalized study recommendations</li>
-                <li>Send technical notices and support communications</li>
-                <li>Respond to your comments and questions</li>
-                <li>Analyze usage to improve our user experience</li>
-            </ul>
+                <h3 style="margin: 25px 0 15px 0;">2. How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>Provide, maintain, and improve our services</li>
+                    <li>Track your study progress and maintain streaks</li>
+                    <li>Generate personalized study recommendations</li>
+                    <li>Send technical notices and support communications</li>
+                    <li>Respond to your comments and questions</li>
+                    <li>Analyze usage to improve our user experience</li>
+                </ul>
 
-            <h3 style="margin: 25px 0 15px 0;">3. Firebase and Google Services</h3>
-            <p>We use Firebase Authentication to securely manage user sign-ins with email and password. Firebase may
-                process limited personal data in accordance with Google's Privacy Policy. By using the app, you agree to
-                Firebase's terms.</p>
+                <h3 style="margin: 25px 0 15px 0;">3. Firebase and Google Services</h3>
+                <p>We use Firebase Authentication to securely manage user sign-ins with email and password. Firebase may
+                    process limited personal data in accordance with Google's Privacy Policy. By using the app, you
+                    agree to
+                    Firebase's terms.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">4. Information Sharing</h3>
-            <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your
-                consent, except as described in this policy. We may share non-identifiable, aggregated data for
-                analytics.</p>
+                <h3 style="margin: 25px 0 15px 0;">4. Information Sharing</h3>
+                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your
+                    consent, except as described in this policy. We may share non-identifiable, aggregated data for
+                    analytics.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">5. Data Security</h3>
-            <p>We implement appropriate technical and organizational safeguards to protect your personal information
-                against unauthorized access, alteration, or loss. These include encryption, secure servers, and regular
-                security audits.</p>
+                <h3 style="margin: 25px 0 15px 0;">5. Data Security</h3>
+                <p>We implement appropriate technical and organizational safeguards to protect your personal information
+                    against unauthorized access, alteration, or loss. These include encryption, secure servers, and
+                    regular
+                    security audits.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">6. Data Retention</h3>
-            <p>We retain your personal data only as long as necessary to provide our services. You may delete your
-                account and all associated data at any time by selecting 'Delete Account' in the Profile section of the
-                app.</p>
+                <h3 style="margin: 25px 0 15px 0;">6. Data Retention</h3>
+                <p>We retain your personal data only as long as necessary to provide our services. You may delete your
+                    account and all associated data at any time by selecting 'Delete Account' in the Profile section of
+                    the
+                    app.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">7. Your Rights</h3>
-            <p>You have the right to:</p>
-            <ul style="margin: 15px 0; padding-left: 30px;">
-                <li>Access and correct your personal information</li>
-                <li>Delete your account and data</li>
-                <li>Export your data in a portable format</li>
-                <li>Object to non-essential processing</li>
-                <li>Opt out of non-essential communications</li>
-            </ul>
+                <h3 style="margin: 25px 0 15px 0;">7. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>Access and correct your personal information</li>
+                    <li>Delete your account and data</li>
+                    <li>Export your data in a portable format</li>
+                    <li>Object to non-essential processing</li>
+                    <li>Opt out of non-essential communications</li>
+                </ul>
 
-            <h3 style="margin: 25px 0 15px 0;">8. Children's Privacy</h3>
-            <p>Our service is not directed to children under 13. We do not knowingly collect personal information from
-                children under 13. If we learn that we have collected such data, we will delete it immediately.</p>
+                <h3 style="margin: 25px 0 15px 0;">8. Children's Privacy</h3>
+                <p>Our service is not directed to children under 13. We do not knowingly collect personal information
+                    from
+                    children under 13. If we learn that we have collected such data, we will delete it immediately.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">9. International Data Transfers</h3>
-            <p>Your information may be processed outside your country of residence, including in the United States. We
-                ensure appropriate safeguards are in place for international data transfers.</p>
+                <h3 style="margin: 25px 0 15px 0;">9. International Data Transfers</h3>
+                <p>Your information may be processed outside your country of residence, including in the United States.
+                    We
+                    ensure appropriate safeguards are in place for international data transfers.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">10. Changes to Privacy Policy</h3>
-            <p>We may update this Privacy Policy from time to time. We will notify users of any material changes by
-                updating the "Last Updated" date above and through in-app notices.</p>
+                <h3 style="margin: 25px 0 15px 0;">10. Changes to Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify users of any material changes by
+                    updating the "Last Updated" date above and through in-app notices.</p>
 
-            <h3 style="margin: 25px 0 15px 0;">11. Contact Us</h3>
-            <p>TextbookPro is developed by Harleen Sachdev.</p>
-            <p>For questions or requests regarding this Privacy Policy, please contact <a
-                    href="mailto:harleennsachdev@gmail.com" style="color: #4facfe;">harleennsachdev@gmail.com</a></p>
+                <h3 style="margin: 25px 0 15px 0;">11. Contact Us</h3>
+                <p>TextbookPro is developed by Harleen Sachdev.</p>
+                <p>For questions or requests regarding this Privacy Policy, please contact <a
+                        href="mailto:harleennsachdev@gmail.com" style="color: #4facfe;">harleennsachdev@gmail.com</a>
+                </p>
+            </div>
         </div>
 
         <div class="footer">
@@ -482,6 +699,41 @@
             <p style="margin-top: 10px;">Empowering students to master their textbooks, one chapter at a time.</p>
         </div>
     </div>
+
+    <button class="back-to-top" onclick="scrollToTop()" id="backToTop">↑</button>
+
+    <script>
+        function showSection(sectionId, button) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected section and activate button
+            document.getElementById(sectionId).classList.add('active');
+            button.classList.add('active');
+
+            // Scroll to top when switching sections
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function () {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
